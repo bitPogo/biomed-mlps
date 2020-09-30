@@ -21,7 +21,7 @@ class Doid3Layered( ModelBase ):
         #hidden layer
         Model.add( Dropout(0.25) )
         Model.add( Dense(
-            200,
+            250,
             activation = 'relu',
             kernel_initializer = 'random_uniform',
             bias_initializer='zero')
