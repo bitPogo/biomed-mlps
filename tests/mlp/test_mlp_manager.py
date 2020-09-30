@@ -11,6 +11,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__WB2DP = patch( 'biomed.mlp.mlp_manager.WeightedBin2LayeredDrop', spec = MLP )
         self.__B3P = patch( 'biomed.mlp.mlp_manager.Bin3Layered', spec = MLP )
         self.__WB3P = patch( 'biomed.mlp.mlp_manager.WeightedBin3Layered', spec = MLP )
+        self.__B4P = patch( 'biomed.mlp.mlp_manager.Bin4Layered', spec = MLP )
         self.__WB4P = patch( 'biomed.mlp.mlp_manager.WeightedBin4Layered', spec = MLP )
 
         self.__B2 = self.__B2P.start()
@@ -18,6 +19,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__WB2D = self.__WB2DP.start()
         self.__B3 = self.__B3P.start()
         self.__WB3 = self.__WB3P.start()
+        self.__B4 = self.__B4P.start()
         self.__WB4 = self.__WB4P.start()
 
         self.__ReferenceModel = MagicMock( spec = MLP )
@@ -29,6 +31,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__WB2DP.stop()
         self.__B3P.stop()
         self.__WB3P.stop()
+        self.__B4P.stop()
         self.__WB4P.stop()
 
     def __fakeLocator( self, _, __ ):
@@ -46,6 +49,7 @@ class MLPManagerSpec( unittest.TestCase ):
             "wb2d": self.__WB2D,
             "b3": self.__B3,
             "wb3": self.__WB3,
+            "b4": self.__B4,
             "wb4": self.__WB4,
         }
 

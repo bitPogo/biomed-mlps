@@ -7,6 +7,7 @@ from biomed.mlp.bin_tow_w_layered import WeightedBin2Layered
 from biomed.mlp.bin_2_w_d_layered import WeightedBin2LayeredDrop
 from biomed.mlp.bin_3_layered import Bin3Layered
 from biomed.mlp.bin_3_w_layered import WeightedBin3Layered
+from biomed.mlp.bin_4_layered import Bin4Layered
 from biomed.mlp.bin_4_w_layered import WeightedBin4Layered
 from biomed.properties_manager import PropertiesManager
 from typing import Union
@@ -20,6 +21,7 @@ class MLPManager( MLP ):
             "wb2d": WeightedBin2LayeredDrop,
             "b3": Bin3Layered,
             "wb3": WeightedBin3Layered,
+            "b4": Bin4Layered,
             "wb4": WeightedBin4Layered,
         }
 
