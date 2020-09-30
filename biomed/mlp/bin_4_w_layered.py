@@ -54,5 +54,7 @@ class WeightedBin4Layered( ModelBase ):
             metrics=['accuracy']
         )
 
+        self._Weights = Weights
         self._Model = Model
+        self._CustomObjects = { 'WeightedCrossentropy': WeightedCrossentropy }
         return self._summarize()
