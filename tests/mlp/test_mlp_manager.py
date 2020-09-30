@@ -14,6 +14,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__B4P = patch( 'biomed.mlp.mlp_manager.Bin4Layered', spec = MLP )
         self.__WB4P = patch( 'biomed.mlp.mlp_manager.WeightedBin4Layered', spec = MLP )
 
+        self.__D3P = patch( 'biomed.mlp.mlp_manager.Doid3Layered', spec = MLP )
+        self.__D4P = patch( 'biomed.mlp.mlp_manager.Doid4Layered', spec = MLP )
+        self.__D5P = patch( 'biomed.mlp.mlp_manager.Doid5Layered', spec = MLP )
+        self.__D6P = patch( 'biomed.mlp.mlp_manager.Doid6Layered', spec = MLP )
+        self.__D7P = patch( 'biomed.mlp.mlp_manager.Doid7Layered', spec = MLP )
+        self.__D8P = patch( 'biomed.mlp.mlp_manager.Doid8Layered', spec = MLP )
+        self.__D9P = patch( 'biomed.mlp.mlp_manager.Doid9Layered', spec = MLP )
+
         self.__B2 = self.__B2P.start()
         self.__WB2 = self.__WB2P.start()
         self.__WB2D = self.__WB2DP.start()
@@ -21,6 +29,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__WB3 = self.__WB3P.start()
         self.__B4 = self.__B4P.start()
         self.__WB4 = self.__WB4P.start()
+
+        self.__D3 = self.__D3P.start()
+        self.__D4 = self.__D4P.start()
+        self.__D5 = self.__D5P.start()
+        self.__D6 = self.__D6P.start()
+        self.__D7 = self.__D7P.start()
+        self.__D8 = self.__D8P.start()
+        self.__D9 = self.__D9P.start()
 
         self.__ReferenceModel = MagicMock( spec = MLP )
         self.__B2.return_value = self.__ReferenceModel
@@ -33,6 +49,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__WB3P.stop()
         self.__B4P.stop()
         self.__WB4P.stop()
+
+        self.__D3P.stop()
+        self.__D4P.stop()
+        self.__D5P.stop()
+        self.__D6P.stop()
+        self.__D7P.stop()
+        self.__D8P.stop()
+        self.__D9P.stop()
 
     def __fakeLocator( self, _, __ ):
         PM = PropertiesManager()
@@ -51,6 +75,13 @@ class MLPManagerSpec( unittest.TestCase ):
             "wb3": self.__WB3,
             "b4": self.__B4,
             "wb4": self.__WB4,
+            "doid3": self.__D3,
+            "doid4": self.__D4,
+            "doid5": self.__D5,
+            "doid6": self.__D6,
+            "doid7": self.__D7,
+            "doid9": self.__D8,
+            "doid9": self.__D9,
         }
 
         for ModelKey in Models:
