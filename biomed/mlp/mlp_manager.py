@@ -35,7 +35,7 @@ class MLPManager( MLP ):
             "doid5": Doid5Layered,
             "doid6": Doid6Layered,
             "doid7": Doid7Layered,
-            "doid9": Doid9Layered,
+            "doid8": Doid8Layered,
             "doid9": Doid9Layered,
         }
 

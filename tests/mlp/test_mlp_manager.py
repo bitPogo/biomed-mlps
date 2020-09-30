@@ -80,7 +80,7 @@ class MLPManagerSpec( unittest.TestCase ):
             "doid5": self.__D5,
             "doid6": self.__D6,
             "doid7": self.__D7,
-            "doid9": self.__D8,
+            "doid8": self.__D8,
             "doid9": self.__D9,
         }
 
