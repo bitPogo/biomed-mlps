@@ -7,6 +7,7 @@ from biomed.properties_manager import PropertiesManager
 class MLPManagerSpec( unittest.TestCase ):
     def setUp( self ):
         self.__B2P = patch( 'biomed.mlp.mlp_manager.Bin2Layered', spec = MLP )
+        self.__B2L2P = patch( 'biomed.mlp.mlp_manager.Bin2L2Layered', spec = MLP )
         self.__WB2P = patch( 'biomed.mlp.mlp_manager.WeightedBin2Layered', spec = MLP )
         self.__WB2DP = patch( 'biomed.mlp.mlp_manager.WeightedBin2LayeredDrop', spec = MLP )
         self.__B3P = patch( 'biomed.mlp.mlp_manager.Bin3Layered', spec = MLP )
@@ -23,6 +24,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__D9P = patch( 'biomed.mlp.mlp_manager.Doid9Layered', spec = MLP )
 
         self.__B2 = self.__B2P.start()
+        self.__B2L2 = self.__B2L2P.start()
         self.__WB2 = self.__WB2P.start()
         self.__WB2D = self.__WB2DP.start()
         self.__B3 = self.__B3P.start()
@@ -43,6 +45,7 @@ class MLPManagerSpec( unittest.TestCase ):
 
     def tearDown( self ):
         self.__B2P.stop()
+        self.__B2L2P.stop()
         self.__WB2P.stop()
         self.__WB2DP.stop()
         self.__B3P.stop()
@@ -69,6 +72,7 @@ class MLPManagerSpec( unittest.TestCase ):
     def test_it_initializes_a_models( self  ):
         Models = {
             "b2": self.__B2,
+            "b2l2": self.__B2L2,
             "wb2": self.__WB2,
             "wb2d": self.__WB2D,
             "b3": self.__B3,

@@ -3,6 +3,7 @@ from biomed.mlp.mlp import MLPFactory
 from biomed.mlp.input_data import InputData
 import biomed.services_getter as ServiceGetter
 from biomed.mlp.bin_tow_layered import Bin2Layered
+from biomed.mlp.bin_tow_l2_layered import Bin2L2Layered
 from biomed.mlp.bin_tow_w_layered import WeightedBin2Layered
 from biomed.mlp.bin_2_w_d_layered import WeightedBin2LayeredDrop
 from biomed.mlp.bin_3_layered import Bin3Layered
@@ -24,6 +25,7 @@ class MLPManager( MLP ):
     def __init__( self, PM: PropertiesManager ):
         self.__Models = {
             "b2": Bin2Layered,
+            "b2l2": Bin2L2Layered,
             "wb2": WeightedBin2Layered,
             "wb2d": WeightedBin2LayeredDrop,
             "b3": Bin3Layered,
