@@ -815,8 +815,6 @@ class StdEvaluatorSpec( unittest.TestCase ):
 
         Fold = 2
 
-        MyEval = StdEvaluator.Factory.getInstance( self.__fakeLocator )
-        MyEval.start( ShortName, "test of the module" )
         MyEval.setFold( Fold )
 
         self.__mkdir.assert_any_call(

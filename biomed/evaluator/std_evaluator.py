@@ -24,6 +24,7 @@ class StdEvaluator( Evaluator ):
     ):
         self.__Properties = Properties
         self.__Path = None
+        self.__BaseDir = None
         self.__SimpleWriter = SimpleWriter
         self.__JSONWriter = JSONWriter
         self.__CSVWriter = CSVWriter
@@ -34,7 +35,7 @@ class StdEvaluator( Evaluator ):
         self.__Steps = []
 
     def __setPath( self, ShortName: str ):
-        self.__Path = OS.path.join(
+        self.__Path = self.__BaseDir = OS.path.join(
             self.__Properties.result_dir,
             "{}-{}".format( ShortName, Time.now().strftime( '%Y-%m-%d_%H-%M-%S' ) )
         )
@@ -90,7 +91,7 @@ class StdEvaluator( Evaluator ):
 
     def setFold( self, Fold ):
         self.__checkIfIsStarted()
-        self.__Path = OS.path.join( self.__Path, str( Fold ) )
+        self.__Path = OS.path.join( self.__BaseDir, str( Fold ) )
         mkdir( self.__Path )
 
     def __checkIfIsStarted( self ):
