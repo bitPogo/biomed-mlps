@@ -2,13 +2,14 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from biomed.properties_manager import PropertiesManager
 from keras.regularizers import l1
+from biomed.mlp.util.weighted_crossentropy import WeightedCrossentropy
 from biomed.mlp.model_base import ModelBase
 
-class Doid3Layered( ModelBase ):
+class WeightedDoid3Layered( ModelBase ):
     def __init__( self, Properties: PropertiesManager ):
-        super( Doid3Layered, self ).__init__( Properties )
+        super( WeightedDoid3Layered, self ).__init__( Properties )
 
-    def buildModel( self, Shape: tuple, _: None = None ) -> str:
+    def buildModel( self, Shape: tuple, Weights: dict ) -> str:
         Model = Sequential()
         #input layer
         Model.add(
@@ -31,10 +32,16 @@ class Doid3Layered( ModelBase ):
         Model.add( Dense( units = 16, activation ='softmax' ) )
 
         Model.compile(
-            loss="categorical_crossentropy",
+            loss = WeightedCrossentropy(
+                'weighted_categorical_crossentropy',
+                Weights,
+                'categorical',
+            ),
             optimizer='sgd',
             metrics=['accuracy']
         )
 
         self._Model = Model
+        self._Weights = Weights
+        self._CustomObjects = { 'WeightedCrossentropy': WeightedCrossentropy }
         return self._summarize()

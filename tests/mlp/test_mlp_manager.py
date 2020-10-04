@@ -17,6 +17,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__B4P = patch( 'biomed.mlp.mlp_manager.Bin4Layered', spec = MLP )
         self.__WB4P = patch( 'biomed.mlp.mlp_manager.WeightedBin4Layered', spec = MLP )
 
+        self.__D2P = patch( 'biomed.mlp.mlp_manager.Doid2Layered', spec = MLP )
         self.__D3P = patch( 'biomed.mlp.mlp_manager.Doid3Layered', spec = MLP )
         self.__D4P = patch( 'biomed.mlp.mlp_manager.Doid4Layered', spec = MLP )
         self.__D5P = patch( 'biomed.mlp.mlp_manager.Doid5Layered', spec = MLP )
@@ -24,6 +25,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__D7P = patch( 'biomed.mlp.mlp_manager.Doid7Layered', spec = MLP )
         self.__D8P = patch( 'biomed.mlp.mlp_manager.Doid8Layered', spec = MLP )
         self.__D9P = patch( 'biomed.mlp.mlp_manager.Doid9Layered', spec = MLP )
+
+        self.__WD3P = patch( 'biomed.mlp.mlp_manager.WeightedDoid3Layered', spec = MLP )
+        self.__WD4P = patch( 'biomed.mlp.mlp_manager.WeightedDoid4Layered', spec = MLP )
+        self.__WD5P = patch( 'biomed.mlp.mlp_manager.WeightedDoid5Layered', spec = MLP )
+        self.__WD6P = patch( 'biomed.mlp.mlp_manager.WeightedDoid6Layered', spec = MLP )
+        self.__WD7P = patch( 'biomed.mlp.mlp_manager.WeightedDoid7Layered', spec = MLP )
+        self.__WD8P = patch( 'biomed.mlp.mlp_manager.WeightedDoid8Layered', spec = MLP )
+        self.__WD9P = patch( 'biomed.mlp.mlp_manager.WeightedDoid9Layered', spec = MLP )
 
         self.__B2 = self.__B2P.start()
         self.__B2L2 = self.__B2L2P.start()
@@ -36,6 +45,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__B4 = self.__B4P.start()
         self.__WB4 = self.__WB4P.start()
 
+        self.__D2 = self.__D2P.start()
         self.__D3 = self.__D3P.start()
         self.__D4 = self.__D4P.start()
         self.__D5 = self.__D5P.start()
@@ -43,6 +53,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__D7 = self.__D7P.start()
         self.__D8 = self.__D8P.start()
         self.__D9 = self.__D9P.start()
+
+        self.__WD3 = self.__WD3P.start()
+        self.__WD4 = self.__WD4P.start()
+        self.__WD5 = self.__WD5P.start()
+        self.__WD6 = self.__WD6P.start()
+        self.__WD7 = self.__WD7P.start()
+        self.__WD8 = self.__WD8P.start()
+        self.__WD9 = self.__WD9P.start()
 
         self.__ReferenceModel = MagicMock( spec = MLP )
         self.__B2.return_value = self.__ReferenceModel
@@ -59,6 +77,7 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__B4P.stop()
         self.__WB4P.stop()
 
+        self.__D2P.stop()
         self.__D3P.stop()
         self.__D4P.stop()
         self.__D5P.stop()
@@ -66,6 +85,14 @@ class MLPManagerSpec( unittest.TestCase ):
         self.__D7P.stop()
         self.__D8P.stop()
         self.__D9P.stop()
+
+        self.__WD3P.stop()
+        self.__WD4P.stop()
+        self.__WD5P.stop()
+        self.__WD6P.stop()
+        self.__WD7P.stop()
+        self.__WD8P.stop()
+        self.__WD9P.stop()
 
     def __fakeLocator( self, _, __ ):
         PM = PropertiesManager()
@@ -86,6 +113,7 @@ class MLPManagerSpec( unittest.TestCase ):
             "wb3": self.__WB3,
             "b4": self.__B4,
             "wb4": self.__WB4,
+            "doid2": self.__D2,
             "doid3": self.__D3,
             "doid4": self.__D4,
             "doid5": self.__D5,
@@ -93,6 +121,13 @@ class MLPManagerSpec( unittest.TestCase ):
             "doid7": self.__D7,
             "doid8": self.__D8,
             "doid9": self.__D9,
+            "wdoid3": self.__WD3,
+            "wdoid4": self.__WD4,
+            "wdoid5": self.__WD5,
+            "wdoid6": self.__WD6,
+            "wdoid7": self.__WD7,
+            "wdoid8": self.__WD8,
+            "wdoid9": self.__WD9,
         }
 
         for ModelKey in Models:

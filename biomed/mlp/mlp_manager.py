@@ -11,6 +11,7 @@ from biomed.mlp.bin_3_layered import Bin3Layered
 from biomed.mlp.bin_3_w_layered import WeightedBin3Layered
 from biomed.mlp.bin_4_layered import Bin4Layered
 from biomed.mlp.bin_4_w_layered import WeightedBin4Layered
+from biomed.mlp.doid_2_layered import Doid2Layered
 from biomed.mlp.doid_3_layered import Doid3Layered
 from biomed.mlp.doid_4_layered import Doid4Layered
 from biomed.mlp.doid_5_layered import Doid5Layered
@@ -18,6 +19,13 @@ from biomed.mlp.doid_6_layered import Doid6Layered
 from biomed.mlp.doid_7_layered import Doid7Layered
 from biomed.mlp.doid_8_layered import Doid8Layered
 from biomed.mlp.doid_9_layered import Doid9Layered
+from biomed.mlp.doid_3_w_layered import WeightedDoid3Layered
+from biomed.mlp.doid_4_w_layered import WeightedDoid4Layered
+from biomed.mlp.doid_5_w_layered import WeightedDoid5Layered
+from biomed.mlp.doid_6_w_layered import WeightedDoid6Layered
+from biomed.mlp.doid_7_w_layered import WeightedDoid7Layered
+from biomed.mlp.doid_8_w_layered import WeightedDoid8Layered
+from biomed.mlp.doid_9_w_layered import WeightedDoid9Layered
 from biomed.properties_manager import PropertiesManager
 from typing import Union
 from numpy import array as Array
@@ -34,6 +42,7 @@ class MLPManager( MLP ):
             "wb3": WeightedBin3Layered,
             "b4": Bin4Layered,
             "wb4": WeightedBin4Layered,
+            "doid2": Doid2Layered,
             "doid3": Doid3Layered,
             "doid4": Doid4Layered,
             "doid5": Doid5Layered,
@@ -41,6 +50,13 @@ class MLPManager( MLP ):
             "doid7": Doid7Layered,
             "doid8": Doid8Layered,
             "doid9": Doid9Layered,
+            "wdoid3": WeightedDoid3Layered,
+            "wdoid4": WeightedDoid4Layered,
+            "wdoid5": WeightedDoid5Layered,
+            "wdoid6": WeightedDoid6Layered,
+            "wdoid7": WeightedDoid7Layered,
+            "wdoid8": WeightedDoid8Layered,
+            "wdoid9": WeightedDoid9Layered,
         }
 
         self.__Model = None

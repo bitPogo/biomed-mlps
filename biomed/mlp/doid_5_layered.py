@@ -19,15 +19,15 @@ class Doid5Layered( ModelBase ):
             )
         )
         #hidden layer
-        Model.add( Dropout(0.25) )
+        Model.add( Dropout(0.5) )
         Model.add( Dense(
-            250,
+            200,
             activation = 'relu',
             kernel_initializer = 'random_uniform',
             bias_initializer='zero')
         )
         #hidden layer
-        Model.add( Dropout(0.25 ) )
+        Model.add( Dropout(0.5 ) )
         Model.add( Dense(
             200,
             activation = 'relu',
@@ -35,7 +35,7 @@ class Doid5Layered( ModelBase ):
             bias_initializer = 'zero'
         ) )
         #hidden layer
-        Model.add( Dropout(0.25 ) )
+        Model.add( Dropout(0.5 ) )
         Model.add( Dense(
             200,
             activation = 'relu',
