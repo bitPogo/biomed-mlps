@@ -3,7 +3,7 @@ from keras.layers import Dense, Dropout
 from biomed.properties_manager import PropertiesManager
 from keras.regularizers import l1
 from biomed.mlp.model_base import ModelBase
-from typeing import Union
+from typing import Union
 
 class Doid2Layered( ModelBase ):
     def __init__( self, Properties: PropertiesManager ):
