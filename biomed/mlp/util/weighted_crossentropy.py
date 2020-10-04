@@ -47,9 +47,10 @@ class WeightedCrossentropy( Loss ):
 
     def __remapCostMatrix( self, CostMatrix: dict ) -> Numpy.array:
         Transformed = Numpy.ones( ( len( CostMatrix ), len( CostMatrix ) ) )
-        for Index, Weight in CostMatrix.items():
-            Transformed[ 0 ][ Index ] = Weight
-            Transformed[ Index ][ 0 ] = Weight
+        Keys = list( CostMatrix.keys() )
+        for Index in range( 0, len( Keys )):
+            Transformed[ 0 ][ Index ] = CostMatrix[ Keys[ Index ] ]
+            Transformed[ Index ][ 0 ] = CostMatrix[ Keys[ Index ] ]
 
         return Transformed
 
