@@ -57,12 +57,27 @@ class ModelBase( MLP ):
         if Path.exists( self.__FileName ):
             removeFile( self.__FileName )
 
+    def __remapWeights( self ) -> dict:
+        Remaped = {}
+        Keys = list( self._Weights.keys() )
+        for Index in range( 0, len( self._Weights ) ):
+            Remaped[ Index ] = self._Weights[ Keys[ Index ] ]
+
+        return Remaped
+
+
+    def __getWeights( self ) -> Union[ dict, None ]:
+        if not self._Weights:
+            return None
+        else:
+            return self.__remapWeights()
+
     def train( self, X: InputData, Y: InputData ) -> dict:
         print("Training...")
         Hist = self._Model.fit(
             x = X.Training,
             y = Y.Training,
-            class_weight = self._Weights,
+            class_weight = self.__getWeights(),
             shuffle = True,
             epochs = self._Properties.training[ 'epochs' ],
             batch_size = self._Properties.training['batch_size'],

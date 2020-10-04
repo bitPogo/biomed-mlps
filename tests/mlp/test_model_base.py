@@ -154,7 +154,7 @@ class ModelBaseSpec( unittest.TestCase ):
         Model = MagicMock( spec = Sequential )
         X = InputData( MagicMock(), MagicMock(), MagicMock() )
         Y = InputData( MagicMock(), MagicMock(), MagicMock() )
-        Weights = MagicMock()
+        Weights = { 'as': 1, 'bs': 2 }
 
         PM = PropertiesManager()
         PM[ "training" ][ "epochs" ] = 1
@@ -167,7 +167,7 @@ class ModelBaseSpec( unittest.TestCase ):
         Model.fit.assert_called_once_with(
             x = X.Training,
             y = Y.Training,
-            class_weight = Weights,
+            class_weight = { 0: 1, 1: 2 },
             shuffle = True,
             epochs = PM[ "training" ][ "epochs" ],
             batch_size = PM[ "training" ][ "batch_size" ],

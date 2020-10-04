@@ -3,12 +3,13 @@ from keras.layers import Dense, Dropout
 from biomed.properties_manager import PropertiesManager
 from keras.regularizers import l1
 from biomed.mlp.model_base import ModelBase
+from typing import Union
 
 class Doid5Layered( ModelBase ):
     def __init__( self, Properties: PropertiesManager ):
         super( Doid5Layered, self ).__init__( Properties )
 
-    def buildModel( self, Shape: tuple, _: None = None ) -> str:
+    def buildModel( self, Shape: tuple, Weights: Union[ None, dict ] = None ) -> str:
         Model = Sequential()
         #input layer
         Model.add(
@@ -54,4 +55,5 @@ class Doid5Layered( ModelBase ):
         )
 
         self._Model = Model
+        self._Weights = Weights
         return self._summarize()
