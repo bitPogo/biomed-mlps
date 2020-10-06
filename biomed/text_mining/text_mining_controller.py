@@ -13,6 +13,9 @@ from biomed.services_getter import ServiceGetter
 from pandas import DataFrame, Series
 from typing import Union
 from numpy import array as Array, unique
+from uuid import uuid4 as uuid
+
+DELIMITER = '-'
 
 class TextminingController( Controller ):
     def __init__(
@@ -37,7 +40,7 @@ class TextminingController( Controller ):
         self.__Measurer = Measurer
         self.__Model = MLP
 
-        self.__Prefix = 'bce1f597-48e3-42e8-a140-1675e60f34f3-'
+        self.__Prefix = uuid()
         self.__Data = None
         self.__TestData = None
         self.__Categories = None
@@ -235,7 +238,7 @@ class TextminingController( Controller ):
         if self.__isInProduction():
             TestIds = list( TestIds )
             for Index in range( 0, len( TestIds ) ):
-                TestIds[ Index ] = TestIds[ Index ].lstrip( self.__Prefix )
+                TestIds[ Index ] = TestIds[ Index ].split( DELIMITER )[ -1 ]
 
             TestIds = Series( TestIds )
 
@@ -335,7 +338,7 @@ class TextminingController( Controller ):
 
     def __prefixTestIds( self, TestData: Union[ None, DataFrame ] ) -> Union[ None, DataFrame ]:
         if isinstance( TestData, DataFrame ):
-            Ids = [ '{}{}'.format( self.__Prefix, Id ) for Id in list( TestData[ 'pmid' ] ) ]
+            Ids = [ '{}{}{}'.format( self.__Prefix, DELIMITER, Id ) for Id in list( TestData[ 'pmid' ] ) ]
             TestData.pmid = Ids
 
             return TestData

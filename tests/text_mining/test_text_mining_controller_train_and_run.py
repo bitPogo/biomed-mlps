@@ -934,7 +934,7 @@ class TextminingControllerSpec( unittest.TestCase ):
 
         CleanIds = list( self.__TestData[ 'pmid' ] )
         for Index in range( 0, len( CleanIds ) ):
-            CleanIds[ Index ] = CleanIds[ Index ].lstrip( 'bce1f597-48e3-42e8-a140-1675e60f34f3' )
+            CleanIds[ Index ] = CleanIds[ Index ].split( '-' )[ -1 ]
 
         self.assertEqual(
             list( Arguments[ 1 ] ),

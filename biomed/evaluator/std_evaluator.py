@@ -222,7 +222,7 @@ class StdEvaluator( Evaluator ):
 
     async def __capturePredictions( self, Predictions: Array, PMIds: Series, Actual: Series = None ):
         if not Actual:
-            self.__justSavePredictions( Predictions.tolist(), PMIds.tolist() )
+            self.__justSavePredictions( Predictions.tolist(), list( PMIds ) )
         else:
             self.__saveLabeledPredictions( Predictions.tolist(), list( PMIds ), list( Actual ) )
 
